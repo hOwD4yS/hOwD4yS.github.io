@@ -6,7 +6,7 @@ logo_url:           # Get it from GitHub API: https://api.github.com/users/<user
 
 # Site Settings
 url:                https://howd4ys.github.io/ # main url
-baseurl:            /the-plain
+baseurl:            /_posts
 permalink:          /:title # Post permalink
 timezone:           Asia/Kuala_Lumpur # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 mathjax:            true  # enables support for mathjax - set to 'false' to disable
