@@ -5,7 +5,7 @@ title: About
 
 
 
-<h3>__About__</h3>
+<h3>About</h3>
 
 School : Sunrin Internet HIghschool
 
