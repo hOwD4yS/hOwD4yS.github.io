@@ -1,11 +1,8 @@
 ---
-layout: page
-title: About
+layout: post
+title: "About"
+author: "hOwDayS"
+permalink: /about/
 ---
 
-
-
-School : Sunrin Internet HIghschool
-
-Team :  X
-
+hOwDayS!

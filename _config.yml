@@ -1,45 +1,29 @@
-# Site Info
-title:              "hOwDayS"
-description:        "hOwDayS's blog"
-author_name:        "hOwDayS" # change this to your name
-logo_url:           "logo.jpeg"# Get it from GitHub API: https://api.github.com/users/<username>
+# Site settings
+title:          Tale
+description:    "Minimal Jekyll theme for storytellers"
+baseurl:        "/"
+url:            "https://howd4ys.github.io"
 
-# Site Settings
-url:                https://howd4ys.github.io # main url
-baseurl:              
-permalink:          /:title # Post permalink
-timezone:           Asia/  # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-mathjax:            true  # enables support for mathjax - set to 'false' to disable
+# Author
+author:
+  name:         hOwDayS
+  url:          https://howd4ys.github.io
+  email:        glare789@gmail.com
 
-# Site Build
-highlighter:        rouge
-markdown:           kramdown
-kramdown:
-    input:          GFM
+# Build settings
+markdown:       kramdown
+
+# Assets
 sass:
-    style:          :compressed
+  sass_dir:     _sass
+  style:        compressed
 
-# Other Params
-include:            [ "robots.txt" ]
-exclude:            [ "LICENSE", "README.md", "CNAME", "vendor", "Gemfile", "script" ]
+# Gems
 plugins:
-  - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-paginate
+  # - jemoji #Uncomment this to allow emoji in your post
 
-
-
-defaults:
-  -
-    scope:
-      path:         ""
-    values:
-      layout:       "null"
-  -
-    scope:
-      type:         "pages"
-    values:
-      layout:       "page"
-  -
-    scope:
-      type:         "posts"
-    values:
-      layout:       "post"
+# Permalinks
+permalink:      /:year-:month-:day/:title
+paginate:       5
