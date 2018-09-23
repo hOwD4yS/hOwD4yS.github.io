@@ -9,9 +9,13 @@ permalink: /about/
 
 School : Sunrin Internet HIghschool
 
+Email : glare789@gmail.com
+
 Team :  X
 
-Pwn , Reversing 
+Pwn , Reversing , Develop
+
+
 
 
 ```python
