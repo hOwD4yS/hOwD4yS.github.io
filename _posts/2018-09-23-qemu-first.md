@@ -10,7 +10,7 @@ author: hOwDayS
 
 qemu-arm -g \[port] \[binary] 로 열어주고
 
-$gdb-multiarch
+$gdb-multiarch [binary]
 
 $target remote localhost:port
 
@@ -22,7 +22,7 @@ pwntools에서는
 p = process(["qemu-arm","-g","port","binary"])
 ```
 
-$gdb-multiarch
+$gdb-multiarch [binary]
 
 $target remote localhost:port
 
