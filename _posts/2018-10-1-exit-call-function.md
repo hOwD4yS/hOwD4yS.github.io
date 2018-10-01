@@ -180,6 +180,9 @@ __call_tls_dtors 를 내부를 보게 되면 0x3c3d80에서 값을 가져오고
 ```python
 >>> ror17 = lambda x : ((x << 47) & (2**64 - 1)) | (x >> 17)
 >>> hex(ror17(fs:[off_3C3D80]) ^ fd:0x30)
+```
+
+```
 출처 - https://github.com/SPRITZ-Research-Group/ctf-writeups/tree/master/0x00ctf-2017/pwn/left-250
 ```
 
