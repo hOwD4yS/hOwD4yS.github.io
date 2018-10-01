@@ -279,7 +279,7 @@ pwnable에서 heap을 이용한 공격이 있을 때는 보통 \_\_free_hook 혹
 
 아까 보셨다시피 listp의 처음은__exit_funcs 라는 것을 알 수 있습니다.
 
-__exit_funcs의 값인 initial 를 참조해서 코드를 실행하는데요 우린 initial 를 조작할 것입니다.
+__exit_funcs의 값인 initial 를 참조해서 while문을 시작하는데요 우린 initial 를 조작할 것입니다.
 
 ```c++
 while (cur->idx > 0)
