@@ -302,7 +302,7 @@ while (cur->idx > 0)
 
 cur(initial)->idx 를 0으로 덮습니다. 그럼 2번째 while문을 실행하지 않게 됩니다.
 
-cur(initial)->next 의 값으로 "/bin/sh\x00" 으로 덮습니다.
+cur(initial)->next 를 "/bin/sh\x00" 으로 덮습니다.
 
 이제 우린 exit할때 free를 할 수 있게 됩니다.
 
