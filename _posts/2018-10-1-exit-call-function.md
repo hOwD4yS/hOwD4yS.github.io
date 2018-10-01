@@ -288,11 +288,9 @@ while (cur->idx > 0)
 를 우회하고(해당 while문 코드를 실행 시키지 않기 위해서)
 
 ```c++
-      if (*listp != NULL)
-	/* Don't free the last element in the chain, this is the statically
-	   allocate element.  */
-	free (cur);
-    }
+if (*listp != NULL)
+    free (cur);
+}
 ```
 
 를 실행 시킬 수 있도록 할 것입니다.
