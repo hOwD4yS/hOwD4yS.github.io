@@ -8,7 +8,7 @@ author: hOwDayS
 
 exit.c 
 
-```C++
+```c++
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -122,7 +122,7 @@ extern void __run_exit_handlers (int status,
 
 exit_function_list 구조체는 이러합니다.
 
-```C++
+```c++
 struct exit_function_list
   {
     struct exit_function_list *next;
@@ -133,7 +133,7 @@ struct exit_function_list
 
 exit_function 구조체는 이러합니다
 
-```C++
+```c++
 struct exit_function
   {
     /* `flavour' should be of type of the `enum' above but since we need
@@ -193,7 +193,7 @@ __call_tls_dtors 를 내부를 보게 되면 0x3c3d80에서 값을 가져오고
 
 잠깐 while문의 앞과 뒤를 봐봅니다.
 
-```c
+```c++
 struct exit_function_list *cur = *listp;
 ```
 
