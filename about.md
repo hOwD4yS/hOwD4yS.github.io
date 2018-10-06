@@ -7,28 +7,19 @@ permalink: /about/
 
 
 
+<h1>이진헌</h1>
 
-
-<h1>Lee JinHun</h1>
-
-------
-
-
-
-School : Sunrin Internet HIghschool
-
-Email : glare789@gmail.com
-
-Team :  X
-
-Pwn , Reversing , Develop
+- __소속__ : 선린인터넷고등학교 ( Sunrin Internet Highschool )
+- __Contact__ : glare789@gmail.com
+- __Team__ : X
+- __Skills__ : Pwnable , Reversing , Develop
 
 
 
+<h1>역사</h1>
 
-```python
-2017 12.24 Start Hacking
+__2017.12.24__  : 해킹 시작
 
-2018 Layer7 CTF 3rd
-```
+__2018.9.30__ : Layer7 CTF 2018 전체 3등 고등부 2등
 
+__2018.10.4__ : 2018 사이버 공격방어대회(cce) 공격팀 본선진출
