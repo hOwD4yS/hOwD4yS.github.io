@@ -11,6 +11,8 @@ permalink: /about/
 
 <h1>Lee JinHun</h1>
 
+------
+
 
 
 School : Sunrin Internet HIghschool
