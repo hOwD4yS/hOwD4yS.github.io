@@ -9,7 +9,7 @@ permalink: /about/
 
 
 
-<h1>Lee jinhun</h1>
+<h1>Lee JinHun</h1>
 
 
 
