@@ -14,7 +14,7 @@ permalink: /about/
 - __Team__ : X
 - __Skills__ : Pwnable , Reversing , Develop
 
-
+<br>
 
 <h1>역사</h1>
 
