@@ -15,10 +15,9 @@ permalink: /about/
 - __Skills__ : Pwnable , Reversing , Develop
 
 <br>
+<br>
 
-<h1>역사</h1>
-
-
+<h1>History</h1>
 
 - __2017.12.24__  : 해킹 시작
 - __2018.9.30__ : Layer7 CTF 2018 전체 3등 고등부 2등
