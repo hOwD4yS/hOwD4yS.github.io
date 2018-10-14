@@ -291,7 +291,7 @@ cur(initial) -> next가 있는 위치에 아무 값이나 써줍니다.
 
 2. cur(initial)->idx 를 0으로 덮습니다. (1번째 조건)
 
-3. cur(initial)->next 를 "/bin/sh" 으로 덮습니다.  (인자가 cur(initial) ->next 임)
+3. cur(initial)->next 를 "/bin/sh" 으로 덮습니다.  (\_\_free_hook의 인자가 cur(initial) ->next 임)
 
 <br>
 
