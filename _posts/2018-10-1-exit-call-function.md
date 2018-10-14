@@ -6,6 +6,10 @@ author: hOwDayS
 
 <br>
 
+본 글은 pc에 최적화가 되어있습니다
+
+<br>
+
 exit.c 
 
 ```c++
@@ -120,7 +124,7 @@ extern void __run_exit_handlers (int status,
 
 <br>
 
-exit_function_list 구조체는 이러합니다.
+
 
 ```c++
 struct exit_function_list
@@ -131,37 +135,15 @@ struct exit_function_list
   };
 ```
 
-exit_function 구조체는 이러합니다
+exit_function_list 구조체에서 다음 구조체를 가르키는 포인터가
 
-```c++
-struct exit_function
-  {
-    /* `flavour' should be of type of the `enum' above but since we need
-       this element in an atomic operation we have to use `long int'.  */
-    long int flavor;
-    union
-      {
-	void (*at) (void);
-	struct
-	  {
-	    void (*fn) (int status, void *arg);
-	    void *arg;
-	  } on;
-	struct
-	  {
-	    void (*fn) (void *arg, int status);
-	    void *arg;
-	    void *dso_handle;
-	  } cxa;
-      } func;
-  };
-```
+있는 걸로 보아 exit_function_list는 linked-list 로 구성되어있다는 것을 알 수 있습니다.
+
+( exit_function fns 생략 )
 
 <br>
 
-SHARED를 확인 후 __call_tls_dtors가 있는 것을 볼 수 있습니다.
-
-보통 libc를 직접 까서 보게 되면 바로 __call_tls_dtors를 실행하는 것을 볼 수 있습니다.
+도입부분을 보게되면 __call_tls_dtors 를 실행합니다
 
 ```c++
 #ifndef SHARED
@@ -186,7 +168,9 @@ __call_tls_dtors 를 내부를 보게 되면 0x3c3d80에서 값을 가져오고
 출처 - https://github.com/SPRITZ-Research-Group/ctf-writeups/tree/master/0x00ctf-2017/pwn/left-250
 ```
 
-이러한 연산 후에 free를 호출 합니다.
+이러한 연산 후 나온 함수 주소를 호출 합니다. 
+
+그리고 다음 값이 없을 때까지 반복문이 돌기때문에 저곳은 vtable 이라고 유추 할 수 있습니다.
 
 <br>
 
@@ -263,7 +247,7 @@ if (*listp != NULL)
 
 <h1>exploit</h1>
 
-방금까지 exit에 대해서 살펴봤습니다.
+방금까지 exit 함수에 대해서 살펴봤습니다.
 
 간단하게 익스플로잇하는 공격을 설명드리겠습니다.
 
@@ -271,47 +255,56 @@ if (*listp != NULL)
 
 pwnable에서 heap을 이용한 공격이 있을 때는 보통 \_\_free_hook 혹은 \_\_malloc_hook을 덮습니다.
 
-그럼 free 나 malloc을 했을 때 hook을 먼저 살핀 후 값이 있을 시 실행하는데요
+함수 free 와 malloc 안에서는 각자의 hook을 먼저 살핀 후 함수주소가 있을 시 그 함수를 호출 합니다.
 
-우린 exit에서 있는 free를 이용해 우리는 익스플로잇을 할 것입니다.
+저는 exit에서 있는 free를 이용해 익스플로잇을 할 것입니다.
 
 <br>
 
 아까 보셨다시피 listp의 처음은__exit_funcs 라는 것을 알 수 있습니다.
 
-__exit_funcs의 값인 initial 를 참조해서 while문을 시작하는데요 우린 initial 를 조작할 것입니다.
+처음엔 __exit_funcs의 포인터 값인 initial 를 참조해서 while문을 시작하는데요 우린 initial 를 조작할 것입니다.
+
+
+
+free를 하기 위해선 2 가지를 만족 시켜줘야 합니다
 
 ```c++
 while (cur->idx > 0)
 ```
 
-를 우회하고(해당 while문 코드를 실행 시키지 않기 위해서)
+를 우회해야 합니다. 왜냐하면 이 while문을 실행하면 매우 까다롭게 진행되기 때문입니다.
 
 ```c++
-if (*listp != NULL)
-    free (cur);
-}
+*listp = cur->next;
 ```
 
-를 실행 시킬 수 있도록 할 것입니다.
+cur(initial) -> next가 있는 위치에 아무 값이나 써줍니다.
+
+그러면 밑에 있는 free함수가 호출 될 것입니다.
 
 <br>
 
-일단 \_\_free_hook을 system 으로 덮습니다. 
+<h4>시나리오</h4>
 
-cur(initial)->idx 를 0으로 덮습니다. 그럼 2번째 while문을 실행하지 않게 됩니다.
+1. _\_free_hook을 system 으로 덮습니다. 
 
-cur(initial)->next 를 "/bin/sh\x00" 으로 덮습니다.
+2. cur(initial)->idx 를 0으로 덮습니다. (1번째 조건)
 
-이제 우린 exit할때 free를 할 수 있게 됩니다.
+3. cur(initial)->next 를 "/bin/sh" 으로 덮습니다.  (인자가 cur(initial) ->next 임)
 
-exit를 했을 때 free(&"/bin/sh\x00") 라는 코드를 실행 시키고
+<br>
 
-free내부에서 \_\_free_hook(&"/bin/sh\x00")를 실행시키는데
+<h4>Run</h4>
 
- \_\_free_hook를 system으로 덮었으므로 system(&"/bin/sh\x00") 를 실행시키므로
+1. exit를 했을 때 free(cur->next) 코드 실행
 
-최종적으로 쉘을 얻게 됩니다.
+2. free내부에서 \_\_free_hook(cur->next) 실행
+
+3. \_\_free_hook == &system
+
+4. cur->next == "/bin/sh"
+5. system("/bin/sh") 
 
 <br>
 
