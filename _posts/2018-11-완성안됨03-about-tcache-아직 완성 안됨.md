@@ -15,7 +15,7 @@ author: hOwDayS
 - per-thread caching 로 바뀐점
 - 예전 기법에 어떤 영향을 미치는 지
   - House of Spirit , Overlapping Chunks : 전(16.04) 보다 쉬운 조건으로 익스플로잇 가능
-  - tcache poisoning : fastbin 과 비슷하게 다음에 할당 될 chunk의 주소를 조작하여 arbitary write 가능
+  - tcache poisoning : fastbin 과 비슷하게 다음에 할당 될 chunk의 주소(fd)를 조작하여 arbitary write 가능
 - 새롭게 생긴점
 
 
