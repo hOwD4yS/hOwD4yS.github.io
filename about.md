@@ -26,3 +26,10 @@ permalink: /about/
   - [보안뉴스](https://www.boannews.com/media/view.asp?idx=74183&fbclid=IwAR22xH_GtSWZNSKL4uvAZ5RkPUcwTlI0oTjVcJG16IhZMTbaQc9vsfSskd0)
 - __2018.10.27 , 2018.11.30__ : 선린인터넷고등학교 교내해킹대회 문제 출제 및 운영
 
+
+<br>
+<br>
+
+<h1>Bug Hunting</h1>
+
+- __2018.12.11__ : 네이버 카페 stored xss 제보
