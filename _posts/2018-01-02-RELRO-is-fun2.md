@@ -127,13 +127,15 @@ got영역을 살펴봅시다!
 
 **Tip 바이너리는 _start라는 함수를 거쳐서 실행이 됨 , mprotect == 지정한 영역의 권한을 바꿔주는 함수
 
+<br>
+
 제가 이 생각을 하고 _start를 쭈루룩 내려가 봤습니다.
 
 그랬더니 뭔가 익숙한게 나오더군여 
 
 ![image-20180922005607701](../img/2018-01-02-RELRO-is-fun2/11.png)
 
-위에서도 본 _dl_lookup_symbol_x 함수는 이름으로 비교해서 함수를 가져오는 역할를 합니다.
+위에서도 본 _dl_lookup_symbol_x 함수는 이름으로 비교해서 라이브러리로부터  함수를 가져오는 역할를 합니다.
 
 뭔가 찾았으니 코드를 까보죠!
 
@@ -292,9 +294,11 @@ _dl_protect_relro (struct link_map *l)
       && __mprotect ((void *) start, end - start, PROT_READ) < 0)
 ```
 
-FULL RELRO의 특징을 이용해서 _dl_protect_relro 를 호출해서
+FULL RELRO의 특징을 이용해서 _dl_protect_relro 함수를 호출해서
 
 __mprotect ((void *) start, end - start, PROT_READ) 권한 설정을 해주는 것을 볼 수 있습니다.
+
+<br>
 
 gdb로 살펴보죠
 
@@ -311,8 +315,6 @@ mprotect 호출 전에는 권한설정이 안될걸 볼 수 있습니다.
 ![image-20180922005607701](../img/2018-01-02-RELRO-is-fun2/18.png)
 
 짜잔 권한이 설정된 것을 볼 수 있습니다!!!
-
-
 
 
 
