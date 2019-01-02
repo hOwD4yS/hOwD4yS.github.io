@@ -173,7 +173,7 @@ $ gdb ./partial_relro
 
 ![image-20180922005607701](../img/2018-01-02-RELRO-is-fun/7.png)
 
-_DYNAMIC만 권한이 바뀌었지만 exploit 방법이 벌써 몇개 막혔답니다 ㅠㅠ
+Partial RELRO는 NO RELRO와 다른점이 많이 없어서 분량이 짧네요 ㅠㅠ
 
 <br>
 
