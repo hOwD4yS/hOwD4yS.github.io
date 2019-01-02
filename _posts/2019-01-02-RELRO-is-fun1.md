@@ -219,7 +219,7 @@ $ gdb ./full_relro
 
 ![image-20180922005607701](../img/2018-01-02-RELRO-is-fun/9.png)
 
-며용?! Partial RELRO랑 __0x600000 ~ 0x601000__의 권한을 없앤건 같고  vmmap 결과도 같고 뭐가 다른거지?
+며용?! Partial RELRO랑 __0x600000 ~ 0x601000__ 의 권한을 없앤건 같고  vmmap 결과도 같고 뭐가 다른거지?
 
 <br>
 
@@ -239,7 +239,7 @@ FULL RELRO에는 __0x600000 ~ 0x601000__  에는 got 이 없습니다!
 
 <br>
 
-FULL RELRO에서 __0x600000 ~ 0x601000__의 권한을 없앤다는건 got영역 까지도 write권한이 없어졌다 ~
+FULL RELRO에서 __0x600000 ~ 0x601000__ 의 권한을 없앤다는건 got영역 까지도 write권한이 없어졌다 ~
 
 즉 FURLL RELRO 매우 강하다!
 

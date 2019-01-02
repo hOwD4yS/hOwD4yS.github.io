@@ -15,6 +15,8 @@ author: hOwDayS
 
 <h1>RELRO hOw to Load Library functions ?</h1>
 
+<br>
+
 크게 두가지가 있습니다.
 
 NO RELRO 와 Partial RELRO 는 불러오는 방식이 같습니다.
@@ -51,17 +53,25 @@ FULL RELRO는 없습니다.
 
 ![image-20180922005607701](../img/2018-01-02-RELRO-is-fun2/2.png)
 
+<br>
+
 어디론가 점프하네요? 다시 클릭해서 들어가봅시다
 
 ![image-20180922005607701](../img/2018-01-02-RELRO-is-fun2/3.png)
 
 이건 puts_got입니다! 제가 전글에서 got은 함수 라이브러리 주소를 담고있는 영역 이라고 했습니다!
 
+그럼 puts@plt 에서는 puts@got로 jmp하는 역할을 하네요?
+
 함수 동작원리를 눈치 채셨나요? plt 은 라이브러리 주소(got)를 가기위한 연결 통로입니다.
+
+<br>
 
 __그럼 라이브러리는 어떻게 불러올까요?__
 
 ![image-20180922005607701](../img/2018-01-02-RELRO-is-fun2/4.png)
+
+<br>
 
 아까 jmp 화면에서 shift를 누르시게 되면 밑에 또다른 코드가 있습니다.
 
@@ -69,19 +79,25 @@ __그럼 라이브러리는 어떻게 불러올까요?__
 
 라이브러리로부터 함수주소를 가져와야 되기 때문이죠!
 
+<br>
+
 0x400406를 살펴볼까요?
 
 push 0(reloc_offset)
 
 jmp sub_4003f0(Dynamic Linker)
 
-
+<br>
 
 Dynamic Linker에서는 괄호로 쳐놓은 reloc_offset을 통해서 
 
 ![image-20180922005607701](../img/2018-01-02-RELRO-is-fun2/6.png)
 
+<br>
+
 이 테이블로 부터 함수 정보를 가져오게 되고 가져온 정보로
+
+<br>
 
 ![image-20180922005607701](../img/2018-01-02-RELRO-is-fun2/7.png)
 
@@ -93,15 +109,21 @@ Symbol테이블에서 함수의 이름 문자열을 가져오게 됩니다.
 
 그럼 다음부터는 got에는 라이브러리 주소가 적히게 되니 바로 라이브러리 puts함수로 jmp 하겟죠?!
 
-자세한 내용은 https://bpsecblog.wordpress.com/2016/03/09/about_got_plt_2/
+<br>
 
-구조 입니다!
+자세한 내용은 https://bpsecblog.wordpress.com/2016/03/09/about_got_plt_2/ 를 참조해보세요!
+
+<br>
+
+동작원리입니다!
 
 ![image-20180922005607701](../img/2018-01-02-RELRO-is-fun2/8.png)
 
 <br>
 
 <h2>FULL RELRO</h2>
+
+<br>
 
 FULL RELRO의 개념을 다시 짚어 보죠.
 
@@ -129,7 +151,7 @@ got영역을 살펴봅시다!
 
 <br>
 
-제가 이 생각을 하고 _start를 쭈루룩 내려가 봤습니다.
+제가 이 생각을 하고 _start 함수를 쭈루룩 내려가 봤습니다.
 
 그랬더니 뭔가 익숙한게 나오더군여 
 
