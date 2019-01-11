@@ -11,7 +11,7 @@ permalink: /about/
 
 - __소속__ : 선린인터넷고등학교 ( Sunrin Internet Highschool )
 - __Contact__ : glare789@gmail.com
-- __Team__ : X
+- __Team__ : Seoul Electric Decomposer 
 - __Skills__ : Pwnable , Reversing , Develop
 
 <br>
@@ -26,7 +26,6 @@ permalink: /about/
   - [보안뉴스](https://www.boannews.com/media/view.asp?idx=74183&fbclid=IwAR22xH_GtSWZNSKL4uvAZ5RkPUcwTlI0oTjVcJG16IhZMTbaQc9vsfSskd0)
 - __2018.10.27 , 2018.11.30__ : 선린인터넷고등학교 교내해킹대회 문제 출제 및 운영
 - __2018.12.29__ : ROOTCTF 전체 4위 , 고등부 3위
-
 
 <br>
 <br>
