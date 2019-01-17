@@ -2,6 +2,7 @@
 layout: post
 title: gdb-multiarch 사용법 
 author: hOwDayS
+published : false
 ---
 
 
